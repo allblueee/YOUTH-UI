@@ -27,5 +27,5 @@ import demo from './demo.vue'
 
 |    事件名     |    说明    | 参数列表  |            参数说明             |
 | :-----------: | :--------: | :-------: | :-----------------------------: |
-|    `click`    |  点击事件  |  $event   |        原生的 dom event         |
+|    `click`    |  点击事件  |  $event   |        原生的 DOM event         |
 | `customEvent` | 自定义事件 | [a, b, c] | a：参数一；b：参数二；c：参数三 |

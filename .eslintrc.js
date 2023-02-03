@@ -5,4 +5,7 @@ module.exports = {
     'prettier/@typescript-eslint',
     'prettier/vue',
   ],
+  env: {
+    'vue/setup-compiler-macros': true,
+  },
 };
