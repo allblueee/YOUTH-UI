@@ -9,6 +9,11 @@
  import { createRouter, createWebHashHistory, RouterOptions } from 'vue-router'
 
  const routes = [{
+    title: '布局',
+    name: 'Layout',
+    path: '/components/Layout',
+    component: () => import('packages/Layout/docs/README.md'),
+  },{
     title: '按钮',
     name: 'Button',
     path: '/components/Button',
@@ -24,15 +29,10 @@
     path: '/components/Input',
     component: () => import('packages/Input/docs/README.md'),
   },{
-    title: '布局',
-    name: 'Layout',
-    path: '/components/Layout',
-    component: () => import('packages/Layout/docs/README.md'),
-  },{
-    title: '行布局组件',
-    name: 'Yrow',
-    path: '/components/Yrow',
-    component: () => import('packages/Yrow/docs/README.md'),
+    title: '颜色',
+    name: 'Color',
+    path: '/components/Color',
+    component: () => import('packages/Color/docs/README.md'),
   }];
  
  const routerConfig = {

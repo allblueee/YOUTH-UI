@@ -21,10 +21,12 @@
 </template>
 <style lang="scss" scoped>
 .dark {
+  height: 30px;
   border-radius: 5px;
   background: #99a9bf;
 }
 .light {
+  height: 30px;
   border-radius: 5px;
   background: #d5dce5;
 }

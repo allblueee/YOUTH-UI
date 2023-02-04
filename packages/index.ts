@@ -12,6 +12,7 @@ import { FooPlugin } from './Foo';
 import { InputPlugin } from './Input';
 import { YcolPlugin } from './Ycol';
 import { YrowPlugin } from './Yrow';
+// import { ColorPlugin } from './Color';
 
 const YouthPlugin: Plugin = {
   install(app: App) {
@@ -20,13 +21,16 @@ const YouthPlugin: Plugin = {
     InputPlugin.install?.(app);
     YcolPlugin.install?.(app);
     YrowPlugin.install?.(app);
+    // ColorPlugin.install?.(app);
   },
 };
 
 export default YouthPlugin;
 
+
 export * from './Button'
 export * from './Foo'
 export * from './Input'
-export * from './Ycol'
-export * from './Yrow'
+export * from './Ycol';
+export * from './Yrow';
+// export * from './Color'
