@@ -7,13 +7,12 @@
 
 <style lang="scss" scoped>
 .y-button-group {
-  background-color: red;
-  & > .y-button {
-    float: left;
+  :deep .y-button {
+    // float: left;
     position: relative;
-    & + .y-button {
-      margin-left: 0;
-    }
+    // background-color: green;
+    margin-left: 0;
+
     &:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;

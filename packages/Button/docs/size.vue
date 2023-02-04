@@ -1,14 +1,14 @@
 <template>
-  <div class="row">
+  <y-row>
     <y-button>默认button</y-button>
     <y-button size="large">默认button</y-button>
     <y-button size="medium">默认button</y-button>
     <y-button size="small">默认button</y-button>
-  </div>
+  </y-row>
 </template>
 
 <style lang="scss" scoped>
-.row {
+.y-row {
   margin-bottom: 20px;
   .y-button {
     margin-right: 20px;

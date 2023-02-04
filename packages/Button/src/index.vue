@@ -72,7 +72,7 @@ defineEmits(['click']);
   padding: 8px 16px;
   font-size: 13px;
   border-radius: 5px;
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     color: #409eff;
     border-color: transparent;
@@ -84,7 +84,7 @@ defineEmits(['click']);
   color: #fff;
   background-color: #409eff;
   border-color: #409eff;
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     background: #66b1ff;
     background-color: #66b1ff;
@@ -95,7 +95,7 @@ defineEmits(['click']);
   color: #fff;
   background-color: #67c23a;
   border-color: #67c23a;
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     background: #85ce61;
     background-color: #85ce61;
@@ -107,7 +107,7 @@ defineEmits(['click']);
   color: #fff;
   background-color: #909399;
   border-color: #909399;
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     background: #a6a9ad;
     background-color: #a6a9ad;
@@ -119,7 +119,7 @@ defineEmits(['click']);
   color: #fff;
   background-color: #e6a23c;
   border-color: #e6a23c;
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     background: #ebb563;
     background-color: #ebb563;
@@ -131,7 +131,7 @@ defineEmits(['click']);
   color: #fff;
   background-color: #f56c6c;
   border-color: #f56c6c;
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     background: #f78989;
     background-color: #f78989;
@@ -141,7 +141,7 @@ defineEmits(['click']);
 
 // 朴素button样式
 .y-button.is-plain {
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     background: #fff;
     border-color: #489eff;
@@ -151,7 +151,7 @@ defineEmits(['click']);
 .y-button--primary.is-plain {
   color: #409eff;
   background: #ecf5ff;
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     background: #409eff;
     border-color: #409eff;
@@ -161,7 +161,7 @@ defineEmits(['click']);
 .y-button--success.is-plain {
   color: #70c761;
   background: #edf8e9;
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     background: #70c761;
     border-color: #edf8e9;
@@ -172,7 +172,7 @@ defineEmits(['click']);
 .y-button--info.is-plain {
   color: #85888e;
   background: #f2f2f3;
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     background: #85888e;
     border-color: #f2f2f3;
@@ -182,7 +182,7 @@ defineEmits(['click']);
 .y-button--warning.is-plain {
   color: #e6a23c;
   background: #f5dab1;
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     background: #e6a23c;
     border-color: #f5dab1;
@@ -193,7 +193,7 @@ defineEmits(['click']);
 .y-button--danger.is-plain {
   color: #fe6164;
   background: #ffeeee;
-  &:hover,
+  &:hover:not(.is-disabled),
   &:focus {
     background: #fe6164;
     border-color: #ffeeee;
@@ -216,8 +216,7 @@ defineEmits(['click']);
 // disabled属性
 .y-button.is-disabled {
   opacity: 0.8;
-  cursor: default;
-  pointer-events: none;
+  cursor: not-allowed;
 }
 
 // 文字按钮

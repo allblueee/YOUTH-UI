@@ -1,5 +1,11 @@
 [
   {
+    "compName": "Layout",
+    "compZhName": "布局",
+    "compDesc": "通过基础的 24 分栏，迅速简便地创建布局",
+    "compClassName": "layout"
+  },
+  {
     "compName": "Button",
     "compZhName": "按钮",
     "compDesc": "这是一个按钮",
