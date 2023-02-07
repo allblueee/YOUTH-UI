@@ -10,12 +10,14 @@ import { App, Plugin } from 'vue';
 import { ButtonPlugin } from './Button';
 import { InputPlugin } from './Input';
 import { RadioPlugin } from './Radio';
+import { RadioGroupPlugin } from './Radio';
 
 const YouthPlugin: Plugin = {
   install(app: App) {
     ButtonPlugin.install?.(app);
     InputPlugin.install?.(app);
     RadioPlugin.install?.(app);
+    RadioGroupPlugin.install?.(app);
   },
 };
 

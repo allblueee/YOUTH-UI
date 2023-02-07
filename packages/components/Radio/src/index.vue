@@ -1,181 +1,166 @@
-// 使用vue仿照element-ui的radio组件
 <template>
-  <div class="y-radio" :class="{ 'is-checked': model === label, 'is-disabled': disabled }">
-    <label class="y-radio__label">
-      <span class="y-radio__input">
-        <span class="y-radio__inner"></span>
-        <input
-          class="y-radio__original"
-          type="radio"
-          :value="label"
-          :name="name"
-          :disabled="disabled"
-          :checked="model === label"
-          @change="handleChange($event)"
-        />
-      </span>
-      <span class="y-radio__label">
-        <slot></slot>
-      </span>
-    </label>
+  <div class="y-radio" @click="handleChange" :class="classes">
+    <span class="y-radio-input" :class="classes"></span>
+    <span class="y-radio-label" :class="classes">
+      <slot>{{ label }}</slot>
+    </span>
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { useRadio, radioProps, radioEmits } from './radio';
+import { defineProps, defineEmits } from 'vue';
+
+const props = defineProps(radioProps);
+const emits = defineEmits(radioEmits);
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { defineComponent, PropType, ref, watch } from 'vue';
+const { modelValue, label, size, disabled, classes } = useRadio(props, emits);
 
-// 定义props
-export default defineComponent({
-  name: 'YRadio',
-  props: {
-    label: {
-      type: [String, Number],
-      default: '',
-    },
-    disabled: Boolean,
-    checked: Boolean,
-    name: String,
-    modelValue: {
-      type: [String, Number],
-      default: '',
-    },
-  },
-  emits: ['update:modelValue', 'change'],
-  setup(props, { emit }) {
-    // 定义model
-    const model = ref(props.modelValue);
-
-    // 监听modelValue的变化
-    watch(
-      () => props.modelValue,
-      (val) => {
-        model.value = val;
-      },
-    );
-
-    // 监听model的变化
-    watch(
-      () => model.value,
-      (val) => {
-        emit('update:modelValue', val);
-      },
-    );
-
-    // 监听model的变化
-    // watch(
-    //   () => model.value,
-    //   (val) => {
-    //     emit('change', val);
-    //   },
-    // );
-
-    // 监听点击事件
-    const handleChange = (e: any) => {
-      if (props.disabled) return;
-      model.value = props.label;
-      // eslint-disable-next-line no-console
-      console.log(e.target);
-    };
-
-    return {
-      model,
-      handleChange,
-    };
-  },
-});
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const handleChange = () => {
+  if (!disabled.value) {
+    modelValue.value = props.label;
+  }
+};
 </script>
 
-<!-- 定义样式 -->
-<style lang="scss" scoped>
+<script lang="ts">
+export default {
+  name: 'YRadio',
+};
+</script>
+
+<style lang="scss">
+$checked-color: #409eff;
+
+$large-size: 16px;
+$default-size: 14px;
+$small-size: 12px;
+
+$large-inner-size: 10px;
+$default-inner-size: 8px;
+$small-inner-size: 6px;
+
+$large-height: 40px;
+$default-height: 32px;
+$small-height: 24px;
+
 .y-radio {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 14px;
-  line-height: 1;
-  color: #606266;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  outline: none;
-  .y-radio__label {
-    display: inline-block;
-    vertical-align: middle;
-    cursor: pointer;
-    .y-radio__input {
-      position: relative;
-      display: inline-block;
-      vertical-align: middle;
-      width: 14px;
-      height: 14px;
-      border: 1px solid #c0c4cc;
-      border-radius: 50%;
-      background-color: #fff;
-      -webkit-transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-      transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-      .y-radio__inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        display: block;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background-color: #409eff;
-        opacity: 0;
-        -webkit-transform: translate(-50%, -50%) scale(0);
-        transform: translate(-50%, -50%) scale(0);
-        -webkit-transition: -webkit-transform 0.1s ease, opacity 0.1s ease;
-        transition: transform 0.1s ease, opacity 0.1s ease;
-      }
-    }
-    .y-radio__original {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      opacity: 0;
-      cursor: pointer;
+  margin-right: 32px;
+  display: inline-flex;
+  align-items: center;
+  height: $default-height;
+  position: relative;
+
+  &.is-bordered {
+    border: 1px solid #c2c2c2;
+    border-radius: 4px;
+    padding: 0 14px;
+    &.is-checked:not(.is-disabled) {
+      color: $checked-color;
+      border: 1px solid $checked-color;
     }
   }
-  .y-radio__label {
-    margin-left: 10px;
-  }
-  &:hover {
-    .y-radio__input {
-      border-color: #409eff;
+  &.y-radio-small {
+    height: $small-height;
+    &.is-bordered:not(.is-disabled) {
+      padding: 0 10px;
     }
   }
+
+  &.y-radio-large {
+    height: $large-height;
+    &.is-bordered:not(.is-disabled) {
+      padding: 0 18px;
+    }
+  }
+
   &.is-disabled {
     cursor: not-allowed;
-    .y-radio__input {
-      border-color: #c0c4cc;
-      background-color: #ebeef5;
-      cursor: not-allowed;
-      .y-radio__inner {
+    color: #c2c2c2;
+  }
+
+  > .y-radio-input {
+    width: $default-size;
+    height: $default-size;
+    display: inline-flex;
+    box-shadow: #e0e0e6 0px 0px 0px 1px;
+    border-radius: 100%;
+    position: relative;
+
+    &.y-radio-small {
+      height: $small-size;
+      width: $small-size;
+      &:before {
+        left: calc($small-size / 2 - $small-inner-size / 2);
+        top: calc($small-size / 2 - $small-inner-size / 2);
+        width: $small-inner-size;
+        height: $small-inner-size;
+      }
+    }
+
+    &.y-radio-large {
+      height: $large-size;
+      width: $large-size;
+      &:before {
+        left: calc($large-size / 2 - $large-inner-size / 2);
+        top: calc($large-size / 2 - $large-inner-size / 2);
+        width: $large-inner-size;
+        height: $large-inner-size;
+      }
+    }
+
+    &.is-checked {
+      box-shadow: $checked-color 0px 0px 0px 1px;
+
+      &:before {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    &:before {
+      content: ' ';
+      opacity: 0;
+      position: absolute;
+      left: calc($default-size / 2 - $default-inner-size / 2);
+      top: calc($default-size / 2 - $default-inner-size / 2);
+      width: $default-inner-size;
+      height: $default-inner-size;
+      background-color: $checked-color;
+      border-radius: 50%;
+      transform: scale(0.8);
+      transition: opacity 300ms ease-in-out, background-color 300ms ease-in-out,
+        transform 300ms ease-in-out;
+    }
+
+    &.is-disabled {
+      background-color: #fafafc;
+      box-shadow: #e0e0e6 0px 0px 0px 1px;
+
+      &:before {
         background-color: #c0c4cc;
       }
     }
-    .y-radio__label {
-      color: #c0c4cc;
-      cursor: not-allowed;
+
+    &:not(.is-disabled):hover {
+      box-shadow: $checked-color 0px 0px 0px 1px;
     }
   }
-  &.is-checked {
-    .y-radio__input {
-      border-color: #409eff;
-      background-color: #409eff;
-      .y-radio__inner {
-        opacity: 1;
-        -webkit-transform: translate(-50%, -50%) scale(1);
-        transform: translate(-50%, -50%) scale(1);
-      }
+
+  > .y-radio-label {
+    padding-left: 8px;
+    user-select: none;
+    font-size: $default-size;
+
+    &.y-radio-large {
+      font-size: $large-size;
+    }
+
+    &.y-radio-small {
+      font-size: $small-size;
     }
   }
 }
