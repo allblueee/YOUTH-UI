@@ -10,6 +10,7 @@ export const radioProps = {
     default: '',
   },
   disabled: Boolean,
+  checked: Boolean,
   size: String,
   border: Boolean,
 };
@@ -35,16 +36,19 @@ export const useRadio = (props: any, emits: any) => {
 
   const disabled = computed(() => (props.disabled ? props.disabled : radioGroupProp?.disabled));
 
+  const checked = computed(() => (props.checked ? props.checked : radioGroupProp?.checked));
+
   const size = computed(() => (props.size ? props.size : radioGroupProp?.size));
 
   const label = computed(() => props.label);
+
   const border = computed(() => (props.border ? props.border : radioGroupProp?.border));
 
   const classes = computed(() => ({
-    'is-checked': modelValue.value === label.value,
     'is-disabled': disabled.value,
     [`y-radio-${size.value}`]: size.value,
     'is-bordered': border.value,
+    'is-checked': modelValue.value === label.value,
   }));
 
   return {
@@ -53,5 +57,6 @@ export const useRadio = (props: any, emits: any) => {
     size,
     label,
     classes,
+    checked,
   };
 };

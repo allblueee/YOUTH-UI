@@ -9,13 +9,20 @@
 
 <script setup lang="ts">
 import { useRadio, radioProps, radioEmits } from './radio';
-import { defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits, onMounted } from 'vue';
 
 const props = defineProps(radioProps);
 const emits = defineEmits(radioEmits);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const { modelValue, label, size, disabled, classes } = useRadio(props, emits);
+const { modelValue, label, size, disabled, classes, checked } = useRadio(props, emits);
+
+// 在页面加载的时候运行checkischecked方法
+onMounted(() => {
+  if (checked.value && !disabled.value) {
+    modelValue.value = props.label;
+  }
+});
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const handleChange = () => {
