@@ -10,5 +10,11 @@
     "compZhName": "输入框",
     "compDesc": "输入框",
     "compClassName": "input"
+  },
+  {
+    "compName": "Radio",
+    "compZhName": "单选框",
+    "compDesc": "这是一个单选框",
+    "compClassName": "radio"
   }
 ]

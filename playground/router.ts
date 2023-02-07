@@ -19,6 +19,12 @@ const routes = [
     path: '/components/Input',
     component: () => import('packages/components/Input/docs/README.md'),
   },
+  {
+    title: '单选框',
+    name: 'Radio',
+    path: '/components/Radio',
+    component: () => import('packages/components/Radio/docs/README.md'),
+  },
 ];
 
 const routerConfig = {
