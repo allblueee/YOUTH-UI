@@ -1,0 +1,15 @@
+{
+  "name": "@youth-ui/icons-svg",
+  "version": "2.0.10",
+  "description": "SVG icon for YOUTH-UI Icons collection.",
+  "license": "MIT",
+  "files": [
+    "*.svg"
+  ],
+  "scripts": {
+    "optimize": "svgo -f . -o ."
+  },
+  "devDependencies": {
+    "svgo": "^2.8.0"
+  }
+}

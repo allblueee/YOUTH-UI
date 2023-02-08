@@ -12,6 +12,12 @@
     "compClassName": "input"
   },
   {
+    "compName": "Icon",
+    "compZhName": "图标",
+    "compDesc": "YOUTH-UI 的 Icon 组件",
+    "compClassName": "icon"
+  },
+  {
     "compName": "Radio",
     "compZhName": "单选框",
     "compDesc": "这是一个单选框",

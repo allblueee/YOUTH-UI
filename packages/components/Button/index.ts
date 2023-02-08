@@ -1,9 +1,11 @@
-import { App, Plugin } from 'vue';
 import Button from './src/index.vue';
+import ButtonGroup from './src/button-group.vue';
+import type { App, Plugin } from 'vue';
 
 export const ButtonPlugin: Plugin = {
   install(app: App) {
-    app.component('y-button', Button);
+    app.component('YButton', Button);
+    app.component('YButtonGroup', ButtonGroup);
   },
 };
 
