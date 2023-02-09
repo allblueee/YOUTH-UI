@@ -6,6 +6,7 @@
  */
 import { ButtonPlugin } from './Button';
 import { InputPlugin } from './Input';
+import { CheckBoxPlugin } from './CheckBox';
 import { IconPlugin } from './Icon';
 import { RadioPlugin } from './Radio';
 import { RadioGroupPlugin } from './Radio';
@@ -18,6 +19,7 @@ const YouthPlugin: Plugin = {
   install(app: App) {
     ButtonPlugin.install?.(app);
     InputPlugin.install?.(app);
+    CheckBoxPlugin.install?.(app);
     IconPlugin.install?.(app);
     RadioPlugin.install?.(app);
     RadioGroupPlugin.install?.(app);
@@ -29,4 +31,5 @@ export default YouthPlugin;
 export * from './Button';
 export * from './Input';
 export * from './Icon';
+export * from './CheckBox';
 export * from './Radio';

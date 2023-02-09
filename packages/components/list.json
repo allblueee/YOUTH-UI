@@ -12,6 +12,12 @@
     "compClassName": "input"
   },
   {
+    "compName": "CheckBox",
+    "compZhName": "多选框",
+    "compDesc": "默认：这是一个新组件",
+    "compClassName": "check-box"
+  },
+  {
     "compName": "Icon",
     "compZhName": "图标",
     "compDesc": "YOUTH-UI 的 Icon 组件",
